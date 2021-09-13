@@ -42,8 +42,7 @@ const InputForNumber = React.forwardRef(
       console.log(lastInput);
       if (lastInput && lastInput.current.value === "") {
         lastInput.current.focus();
-      }
-      e.target.select();
+      } else e.target.select();
     };
 
     return (
