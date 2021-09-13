@@ -1,5 +1,4 @@
 import "./App.css";
-import { mailgunAgent } from "../utils/MailgunAgent";
 import PasswordForm from "../PasswordForm/PasswordForm";
 
 function App() {

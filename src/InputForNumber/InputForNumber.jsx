@@ -1,9 +1,28 @@
 import "./InputForNumber.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const InputForNumber = React.forwardRef(
-  ({ lastInput, nextInput, isFirst, buttonSubmit }, ref) => {
+  (
+    {
+      lastInput,
+      nextInput,
+      isFirst,
+      buttonSubmit,
+      addNumberToCode,
+      isRefresh,
+      index,
+    },
+    ref
+  ) => {
     const [digit, setDigit] = useState("");
+
+    useEffect(() => {
+      isRefresh && setDigit("");
+    }, [isRefresh]);
+
+    useEffect(() => {
+      addNumberToCode(digit, index);
+    }, [digit, index, addNumberToCode]);
 
     const onChange = (e) => {
       const inputValue = e.target.value;
@@ -14,15 +33,17 @@ const InputForNumber = React.forwardRef(
         if (buttonSubmit) {
           buttonSubmit.current.focus();
         } else {
-          nextInput.current.focus();
+          if (nextInput.current.value === "") nextInput.current.focus();
         }
       }
     };
 
     const onFocus = (e) => {
-      if (!isFirst && lastInput.current.value === "") {
+      console.log(lastInput);
+      if (lastInput && lastInput.current.value === "") {
         lastInput.current.focus();
       }
+      e.target.select();
     };
 
     return (
