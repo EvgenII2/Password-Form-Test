@@ -10,3 +10,12 @@
 .InputForNumber:first-of-type {
   margin-left: 0;
 }
+
+@media (max-width: 600px) {
+  .InputForNumber {
+    width: 15px;
+    height: 25px;
+    margin-left: 5px;
+    font-size: 18px;
+  }
+}

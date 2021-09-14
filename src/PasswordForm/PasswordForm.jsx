@@ -1,7 +1,7 @@
 import "./PasswordForm.css";
 import React, { useEffect, useRef, useState } from "react";
 import InputForNumber from "../InputForNumber/InputForNumber";
-import GeneratePassword from "../utils/GeneratePassword";
+import { GeneratePassword, NUMBER_OF_DIGIT } from "../utils/GeneratePassword";
 import happyCatPicture from "../images/picture-happy-cat.jpg";
 import sadCatPicture from "../images/picture-sad-cat.jpg";
 
@@ -14,7 +14,10 @@ function PasswordForm() {
   let digits = [];
 
   useEffect(() => {
-    if (inputCode.length === 6 && generateCode.toString() === inputCode) {
+    if (
+      inputCode.length === NUMBER_OF_DIGIT &&
+      generateCode.toString() === inputCode
+    ) {
       console.log("ok");
       setIsOk(true);
     } else {
@@ -30,6 +33,7 @@ function PasswordForm() {
   const refFourthDigit = useRef();
   const refFifthDigit = useRef();
   const refSixthDigit = useRef();
+
   const refs = [
     refFirstDigit,
     refSecondDigit,
@@ -69,7 +73,7 @@ function PasswordForm() {
           className="GeneratingPasswordSection__button"
           onClick={onClickGenerateButton}
         >
-          Genereate
+          Generate
         </button>
         <p className="GeneratingPasswordSection__result-container">
           New password:
@@ -85,7 +89,9 @@ function PasswordForm() {
               key={index}
               ref={ref}
               lastInput={index > 0 ? refs[index - 1] : null}
-              nextInput={index < 5 ? refs[index + 1] : refButtonSubmit}
+              nextInput={
+                index < NUMBER_OF_DIGIT - 1 ? refs[index + 1] : refButtonSubmit
+              }
               isFirst={index === 0 ? true : false}
               addNumberToCode={addNumberToCode}
               isRefresh={isRefresh}
