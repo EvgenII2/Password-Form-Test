@@ -1,0 +1,10 @@
+.App {
+  background-color: black;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  min-width: 320px;
+  margin: auto;
+}
