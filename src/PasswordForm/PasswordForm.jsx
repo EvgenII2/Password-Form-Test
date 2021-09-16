@@ -9,7 +9,7 @@ function PasswordForm() {
   const [inputCode, setInputCode] = useState("");
   const [generateCode, setGenerateCode] = useState("");
   const [isOk, setIsOk] = useState(false);
-  const [isRefresh, setRefresh] = useState(false);
+  const [isRefresh, setIsRefresh] = useState(false);
 
   let digits = [];
 
@@ -24,7 +24,7 @@ function PasswordForm() {
       console.log("not ok");
       setIsOk(false);
     }
-    setRefresh(false);
+    setIsRefresh(false);
   }, [inputCode, generateCode]);
 
   const refFirstDigit = useRef();
@@ -48,8 +48,7 @@ function PasswordForm() {
   const onClickGenerateButton = (e) => {
     setGenerateCode(GeneratePassword);
     setInputCode("");
-    refFirstDigit.current.value = 0;
-    setRefresh(true);
+    setIsRefresh(true);
     digits = [];
   };
 

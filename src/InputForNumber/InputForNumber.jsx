@@ -3,15 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const InputForNumber = React.forwardRef(
   (
-    {
-      lastInput,
-      nextInput,
-      isFirst,
-      buttonSubmit,
-      addNumberToCode,
-      isRefresh,
-      index,
-    },
+    { lastInput, nextInput, buttonSubmit, addNumberToCode, isRefresh, index },
     ref
   ) => {
     const [digit, setDigit] = useState("");
